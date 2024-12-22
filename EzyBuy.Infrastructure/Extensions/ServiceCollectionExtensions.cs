@@ -1,4 +1,6 @@
-﻿using EzyBuy.Infrastructure.Data;
+﻿using EzyBuy.Domain.IRepositories;
+using EzyBuy.Infrastructure.Data;
+using EzyBuy.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,5 +15,6 @@ public static class ServiceCollectionExtensions
 		services.AddDbContext<ApplicationDbContext>(option => option.UseSqlServer(connectionString));
 
 		services.AddScoped<ISeeder, Seeder>();
+		services.AddScoped<IBrandRepository, BrandRepository>();
 	}
 }
